@@ -5,9 +5,7 @@ type  AccordionPropsType = {
     // collapsed: boolean
 }
 
-type AccordionTitlePropsType = {
-    title: string
-}
+
 
 
 export const UncontrolledAccordion = (props: AccordionPropsType) => {
@@ -17,21 +15,12 @@ export const UncontrolledAccordion = (props: AccordionPropsType) => {
 
 
     const onClickHandler = () => {
-       //1 cпособ
-        // if (collapsed) {
-        //     setCollapsed(false)
-        // }
-        // if (!collapsed) {
-        //     setCollapsed(true)
-        // }
-
-        //2 способ
         setCollapsed(!collapsed)
     }
 
     return (
         <div>
-            <AccordionTitle title={props.titleValue}/><button onClick={onClickHandler}>toogle</button>
+            <AccordionTitle title={props.titleValue } onClick={onClickHandler}/>
             { !collapsed && <AccordionBody/>}
         </div>
     )
@@ -39,12 +28,15 @@ export const UncontrolledAccordion = (props: AccordionPropsType) => {
 
 }
 
-
+type AccordionTitlePropsType = {
+    title: string
+    onClick: () => void
+}
 
 const AccordionTitle = (props: AccordionTitlePropsType) => {
     return (
         <>
-            <h1>{props.title}</h1>
+            <h1 onClick={()=> {props.onClick()}}>{props.title}</h1>
         </>
     )
 }

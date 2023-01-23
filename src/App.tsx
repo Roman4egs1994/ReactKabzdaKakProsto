@@ -5,6 +5,8 @@ import {OnOff} from "./components/OnOff/OnOff";
 import {UncontrolledRatingUpdate} from "./components/SelfUncontrolledRatingUpdate/UncontrolledRatingUpdate";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 import {UncontrolledAccordion} from "./components/SelfControlledAccordion/UncontrolledAccordion";
+import {UncontrolledAccordionNew} from "./components/UncontrolledAccordionNew/UncontrolledAccordionNew";
+
 
 
 
@@ -18,9 +20,10 @@ function App() {
     return (
         <div className="App">
 
-            <UncontrolledOnOff onChange ={setSwitchOn} /> {switchOn.toString()}
-            
-            <UncontrolledAccordion titleValue={'vava'}/>
+            {/*<UncontrolledOnOff onChange ={setSwitchOn} /> {switchOn.toString()}*/}
+            {/*<UncontrolledAccordion titleValue={'vava'}/>*/}
+
+            {/*<UncontrolledAccordionNew titleValue={'NEW'}/>*/}
         </div>
     );
 }

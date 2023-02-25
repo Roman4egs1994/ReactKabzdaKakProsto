@@ -2,7 +2,7 @@ import React, {ChangeEvent, useCallback, useMemo, useState} from "react";
 
 
 export default {
-    title: "useMemo",
+    title: "useMemoAndUseCallBack",
 }
 
 
@@ -58,17 +58,7 @@ export const DifficultCountingExample = () => {
 
 
 //useMemo
-const UsersSecret = (props: { users: Array<string> }) => {
-    console.log('USERS-SECRET')
-    return (
-        <div>
-            {
-                props.users.map((u, i) => <div key={i}>{u}</div>)
-            }
-        </div>
-    )
-}
-const Users = React.memo(UsersSecret)
+
 
 
 export const HelpsToReactMemo = () => {
@@ -98,6 +88,18 @@ export const HelpsToReactMemo = () => {
 }
 
 
+const UsersSecret = (props: { users: Array<string> }) => {
+    console.log('USERS-SECRET')
+    return (
+        <div>
+            {
+                props.users.map((u, i) => <div key={i}>{u}</div>)
+            }
+        </div>
+    )
+}
+
+const Users = React.memo(UsersSecret)
 
 
 
@@ -133,23 +135,20 @@ export const LikeUseCallbackMemo = () => {
         }
     }, [books])
 
+
     //UseCallBack
     const memoizedAddBook2 = useCallback(()=> {
             console.log('book')
             const newUsers = [...books, 'Sveta' + new Date().getTime()]
             setBooks(newUsers)
-
     }, [books])
 
 
     return (
-
         <>
             <button onClick={() => setCounter(counter + 1)}>+</button>
-
             {counter}
             <Book addBook={memoizedAddBook}/>
-
         </>
     )
 }

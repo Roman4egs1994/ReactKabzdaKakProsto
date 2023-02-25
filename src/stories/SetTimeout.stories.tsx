@@ -2,15 +2,16 @@ import React, {ChangeEvent, useCallback, useEffect, useMemo, useState} from "rea
 
 
 export default {
-    title: "setTimeout",
+    title: "setTimeoutAndHomeworkGetTime",
 }
 
 export const SetTimeoutExample = () => {
 
-    console.log("SetTimeoutExample")
+    // console.log("SetTimeoutExample")
 
     const dataN = () => {
         const date = new Date()
+
         const hours = date.getHours()
         const minutes = date.getMinutes()
         const seconds = date.getSeconds()
@@ -34,13 +35,19 @@ export const SetTimeoutExample = () => {
     }
 
     const data = dataN()
+    const [date, setDate] = useState(data)
 
-    const [counter, setCounter] = useState(data)
     useEffect(() => {
-        setInterval(() => {
-            setCounter((data) => data + 1)
+      const intervalId =  setInterval(() => {
+            setDate((data) => data + 1)
         }, 1000)
-    }, [counter]) //Срабатывает всегда
+
+
+        return () => {
+          clearInterval(intervalId) //Выключение при закрытие компоненты
+        }
+
+    }, [date]) //Запускается 1 раз
 
     return (
         <>
@@ -48,8 +55,4 @@ export const SetTimeoutExample = () => {
         </>
     )
 }
-
-//Cделать часы
-//Каждую секунду вызывать new Date ()
-// var a = new Date()
 
